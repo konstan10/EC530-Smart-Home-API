@@ -124,7 +124,7 @@ def get_house(id):
     house = GetHouseData(id)
     if not house:
         return 'House not found\n', 404
-    return f"House found: {house}\n"
+    return f"House found: {house}\n", 200
 
 @app.route('/houses/<int:id>', methods=['PUT'])
 def update_house(id):
@@ -132,7 +132,7 @@ def update_house(id):
     house = UpdateHouse(id, house_info)
     if not house:
         return 'House not found\n', 404
-    return f"House updated: {house}\n"
+    return f"House updated: {house}\n", 200
 
 @app.route('/houses/<int:id>', methods=['DELETE'])
 def delete_house(id):
@@ -154,7 +154,7 @@ def get_floor(floor_id):
     floor = GetFloor(floor_id)
     if not floor:
         return 'Floor not found\n', 404
-    return f"Floor found: {floor}\n"
+    return f"Floor found: {floor}\n", 200
 
 @app.route('/floors/<int:floor_id>', methods=['PUT'])
 def update_floor(floor_id):
@@ -162,7 +162,7 @@ def update_floor(floor_id):
     floor = UpdateFloor(floor_id, floor_info)
     if not floor:
         return 'Floor not found\n', 404
-    return f"Floor updated: {floor}\n"
+    return f"Floor updated: {floor}\n", 200
 
 @app.route('/houses/<int:house_id>/floors/<int:floor_id>', methods=['DELETE'])
 def delete_floor(house_id, floor_id):
@@ -184,7 +184,7 @@ def get_room(room_id):
     room = GetRoom(room_id)
     if not room:
         return 'Room not found\n', 404
-    return f"Room found: {room}\n"
+    return f"Room found: {room}\n", 200
 
 @app.route('/rooms/<int:room_id>', methods=['PUT'])
 def update_room(room_id):
@@ -192,7 +192,7 @@ def update_room(room_id):
     room = UpdateRoom(room_id, room_info)
     if not room:
         return 'Room not found\n', 404
-    return f"Room updated: {room}\n"
+    return f"Room updated: {room}\n", 200
 
 @app.route('/floors/<int:floor_id>/rooms/<int:room_id>', methods=['DELETE'])
 def delete_room(floor_id, room_id):
