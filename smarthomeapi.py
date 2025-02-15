@@ -116,14 +116,14 @@ def create_house():
     house_info = request.get_json()
     house = CreateHouse(house_info)
     if not house:
-        return 'House already exists\n', 404
+        return "House already exists\n", 404
     return f"House created: {house}\n", 201
 
 @app.route('/houses/<int:id>', methods=['GET'])
 def get_house(id):
     house = GetHouseData(id)
     if not house:
-        return 'House not found\n', 404
+        return "House not found\n", 404
     return f"House found: {house}\n", 200
 
 @app.route('/houses/<int:id>', methods=['PUT'])
@@ -131,29 +131,29 @@ def update_house(id):
     house_info = request.get_json()
     house = UpdateHouse(id, house_info)
     if not house:
-        return 'House not found\n', 404
+        return "House not found\n", 404
     return f"House updated: {house}\n", 200
 
 @app.route('/houses/<int:id>', methods=['DELETE'])
 def delete_house(id):
     house = DeleteHouse(id)
     if not house:
-        return 'House not found\n', 404
-    return 'House deleted successfully\n', 200
+        return "House not found\n", 404
+    return "House deleted successfully\n", 200
 
 @app.route('/houses/<int:house_id>/floors', methods=['POST'])
 def create_floor(house_id):
     floor_info = request.get_json()
     floor = CreateFloor(house_id, floor_info)
     if not floor:
-        return 'House not found or floor already exists\n', 404
+        return "House not found or floor already exists\n", 404
     return f"Floor created: {floor}\n", 201
 
 @app.route('/floors/<int:floor_id>', methods=['GET'])
 def get_floor(floor_id):
     floor = GetFloor(floor_id)
     if not floor:
-        return 'Floor not found\n', 404
+        return "Floor not found\n", 404
     return f"Floor found: {floor}\n", 200
 
 @app.route('/floors/<int:floor_id>', methods=['PUT'])
@@ -161,29 +161,29 @@ def update_floor(floor_id):
     floor_info = request.get_json()
     floor = UpdateFloor(floor_id, floor_info)
     if not floor:
-        return 'Floor not found\n', 404
+        return "Floor not found\n", 404
     return f"Floor updated: {floor}\n", 200
 
 @app.route('/houses/<int:house_id>/floors/<int:floor_id>', methods=['DELETE'])
 def delete_floor(house_id, floor_id):
     floor = DeleteFloor(house_id, floor_id)
     if not floor:
-        return 'Floor not found\n', 404
-    return 'Floor deleted successfully\n', 200
+        return "Floor not found\n", 404
+    return "Floor deleted successfully\n", 200
 
 @app.route('/floors/<int:floor_id>/rooms', methods=['POST'])
 def create_room(floor_id):
     room_info = request.get_json()
     room = CreateRoom(floor_id, room_info)
     if not room:
-        return 'Room already exists or floor not found\n', 400
+        return "Room already exists or floor not found\n", 400
     return f"Room created: {room}\n", 201
 
 @app.route('/rooms/<int:room_id>', methods=['GET'])
 def get_room(room_id):
     room = GetRoom(room_id)
     if not room:
-        return 'Room not found\n', 404
+        return "Room not found\n", 404
     return f"Room found: {room}\n", 200
 
 @app.route('/rooms/<int:room_id>', methods=['PUT'])
@@ -191,15 +191,15 @@ def update_room(room_id):
     room_info = request.get_json()
     room = UpdateRoom(room_id, room_info)
     if not room:
-        return 'Room not found\n', 404
+        return "Room not found\n", 404
     return f"Room updated: {room}\n", 200
 
 @app.route('/floors/<int:floor_id>/rooms/<int:room_id>', methods=['DELETE'])
 def delete_room(floor_id, room_id):
     room = DeleteRoom(floor_id, room_id)
     if not room:
-        return 'Room not found\n', 404
-    return 'Room deleted successfully\n', 200
+        return "Room not found\n", 404
+    return "Room deleted successfully\n", 200
 
 if __name__ == '__main__':
     app.run(debug=True)
